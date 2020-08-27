@@ -61,6 +61,11 @@ export default {
   mounted() {
     this.init();
   },
+  beforeDestroy() {
+    if (this.anim) {
+      this.anim.destroy();
+    }
+  },
   methods: {
     async loadJsonData(path) {
       return await axios.get("/" + path).then(response => {
